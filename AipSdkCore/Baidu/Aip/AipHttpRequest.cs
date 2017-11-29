@@ -48,6 +48,8 @@ namespace Baidu.Aip
 
         private AipHttpRequest()
         {
+
+
             Headers = new Dictionary<string, string>();
             // 所有Url中附带aipSdk=CSharp参数
             Querys = new Dictionary<string, string> {{"aipSdk", "CSharp"}};
@@ -132,7 +134,7 @@ namespace Baidu.Aip
             var body = ProcessHttpRequest(ret);
             Auth.CloudRequest(this, ak, sk);
             ret.GetRequestStream().Write(body, 0, body.Length);
-            ret.GetRequestStream().Close();
+            //ret.GetRequestStream().Close();
             return ret;
         }
 

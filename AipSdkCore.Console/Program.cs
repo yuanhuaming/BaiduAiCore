@@ -1,5 +1,6 @@
 ﻿using Baidu.Aip.Demo;
 using System;
+using System.Text;
 
 namespace AipSdkCore
 {
@@ -7,11 +8,14 @@ namespace AipSdkCore
     {
         static void Main(string[] args)
         {
-            ImageClassifyDemo demo1 = new ImageClassifyDemo("REC6IUxVrHm8EzXr47UWHM3W", "pAxR02BK2h0GLyb06OpQcLChOELFoT2b");
-            //demo1.CarDetectDemo(@"C:\Users\yuanhuaming\Desktop\2017111316340934918938_5707273_16.jpg");
-            demo1.DishDetectDemo(@"C:\Users\yuanhuaming\Desktop\timg.jpg");
 
+#if NETSTANDARD2_0 || NETCOREAPP2_0
+            //  注册了CodePages 编码则为UTF-8
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+#endif
 
+  
+            
             Console.ReadKey();
         }
     }

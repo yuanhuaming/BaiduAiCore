@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0-preview1-25914-04" />
   </ItemGroup>
 
 </Project>
