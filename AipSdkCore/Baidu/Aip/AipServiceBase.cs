@@ -33,7 +33,7 @@ namespace Baidu.Aip
             ApiKey = apiKey;
             SecretKey = secretKey;
             ExpireAt = DateTime.Now;
-            DebugLog = true;
+            DebugLog = false;
         }
 
         protected string Token { get; set; }

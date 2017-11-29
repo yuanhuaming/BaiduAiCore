@@ -7,11 +7,21 @@ namespace Baidu.Aip.Demo
 {
     internal class OcrDemo
     {
+        private readonly Ocr.Ocr client =null;
 
-        public static void GeneralBasic()
+        private readonly Form form = null;
+
+        public OcrDemo(string apiKey, string secretKey)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+            client = new Ocr.Ocr(apiKey, secretKey);
+
+            form = new Form(apiKey,secretKey);
+        }
+
+        public   void GeneralBasic(string filePath)
+        {
+            
+            var image = File.ReadAllBytes(filePath);
 
             // 通用文字识别
             var result = client.GeneralBasic(image);
@@ -20,65 +30,65 @@ namespace Baidu.Aip.Demo
             result = client.GeneralBasic("https://www.baidu.com/img/bd_logo1.png");
         }
 
-        public static void GeneralEnhanced()
+        public   void GeneralEnhanced(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+          
+            var image = File.ReadAllBytes(filePath);
 
             // 带生僻字版
             var result = client.GeneralEnhanced(image);
         }
 
-        public static void GeneralWithLocatin()
+        public   void GeneralWithLocatin(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+            
+            var image = File.ReadAllBytes(filePath);
 
             // 带位置版本
             var result = client.GeneralWithLocatin(image, null);
         }
 
-        public static void WebImage()
+        public   void WebImage(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+           
+            var image = File.ReadAllBytes(filePath);
 
             // 网图识别
             var result = client.WebImage(image, null);
         }
 
-        public static void Accurate()
+        public   void Accurate(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+          
+            var image = File.ReadAllBytes(filePath);
 
             // 高精度识别
             var result = client.Accurate(image);
         }
 
-        public static void AccurateWithLocation()
+        public   void AccurateWithLocation(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+           
+            var image = File.ReadAllBytes(filePath);
 
             // 高精度识别(带位置信息)
             var result = client.AccurateWithLocation(image);
         }
 
 
-        public static void BankCard()
+        public   void BankCard(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+            
+            var image = File.ReadAllBytes(filePath);
 
             // 银行卡识别
             var result = client.BankCard(image);
         }
 
-        public static void Idcard()
+        public   void Idcard(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+            
+            var image = File.ReadAllBytes(filePath);
 
             var options = new Dictionary<string, object>
             {
@@ -90,31 +100,31 @@ namespace Baidu.Aip.Demo
             result = client.IdCardBack(image);
         }
 
-        public static void DrivingLicense()
+        public   void DrivingLicense(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+          
+            var image = File.ReadAllBytes(filePath);
             var result = client.DrivingLicense(image);
         }
 
-        public static void VehicleLicense()
+        public   void VehicleLicense(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+            
+            var image = File.ReadAllBytes(filePath);
             var result = client.VehicleLicense(image);
         }
 
-        public static void PlateLicense()
+        public   void PlateLicense(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+             
+            var image = File.ReadAllBytes(filePath);
             var result = client.PlateLicense(image);
         }
 
-        public static void Receipt()
+        public   void Receipt(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+           
+            var image = File.ReadAllBytes(filePath);
             var options = new Dictionary<string, object>
             {
                 {"recognize_granularity", "small"} // 定位单字符位置
@@ -123,26 +133,33 @@ namespace Baidu.Aip.Demo
         }
 
 
-        public static void BusinessLicense()
+        public   void BusinessLicense(string filePath)
         {
-            var client = new Ocr.Ocr("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+           
+            var image = File.ReadAllBytes(filePath);
             var result = client.BusinessLicense(image);
         }
 
-        public static void FormBegin()
+
+        #region 表单识别
+
+
+
+ 
+
+        public void FormBegin(string filePath)
         {
-            var form = new Form("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+        
+            var image = File.ReadAllBytes(filePath);
             form.DebugLog = false; // 是否开启调试日志
 
             var result = form.BeginRecognition(image);
             Console.Write(result);
         }
 
-        public static void FormGetResult()
+        public void FormGetResult()
         {
-            var form = new Form("Api Key", "Secret Key");
+         
             var options = new Dictionary<string, object>
             {
                 {"result_type", "json"} // 或者为excel
@@ -151,10 +168,10 @@ namespace Baidu.Aip.Demo
             Console.Write(result);
         }
 
-        public static void FormToJson()
+        public void FormToJson(string filePath)
         {
-            var form = new Form("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+          
+            var image = File.ReadAllBytes(filePath);
             form.DebugLog = false; // 是否开启调试日志
 
             // 识别为Json
@@ -162,15 +179,17 @@ namespace Baidu.Aip.Demo
             Console.Write(result);
         }
 
-        public static void FormToExcel()
+        public void FormToExcel(string filePath)
         {
-            var form = new Form("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+            
+            var image = File.ReadAllBytes(filePath);
             form.DebugLog = false; // 是否开启调试日志
 
             // 识别为Excel
             var result = form.RecognizeToExcel(image);
             Console.Write(result);
         }
+
+        #endregion
     }
 }

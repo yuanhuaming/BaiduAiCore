@@ -17,9 +17,9 @@ namespace Baidu.Aip.Demo
         }
 
         // 识别本地文件
-        public void AsrData()
+        public void AsrData(string filePath)
         {
-            var data = File.ReadAllBytes("语音pcm文件地址");
+            var data = File.ReadAllBytes(filePath);
             var result = _asrClient.Recognize(data, "pcm", 16000);
             Console.Write(result);
         }

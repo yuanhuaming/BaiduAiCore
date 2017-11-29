@@ -1,27 +1,35 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Baidu.Aip.Face;
 
 namespace Baidu.Aip.Demo
 {
-    internal class FaceDemo
+    public  class FaceDemo
     {
-        public static void FaceMatch()
-        {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var image1 = File.ReadAllBytes("图片文件路径");
-            var image2 = File.ReadAllBytes("图片文件路径");
-            var image3 = File.ReadAllBytes("图片文件路径");
 
-            var images = new[] {image1, image2, image3};
+        private readonly Face.Face client = null;
+
+        public FaceDemo(string apiKey, string secretKey)
+        {
+            client = new Face.Face(apiKey, secretKey);
+        }
+
+        public void FaceMatch(string[] filePaths)
+        {
+            var images = new List<byte[]>();
+            foreach (var filePath in filePaths)
+            {
+                images.Add(File.ReadAllBytes(filePath));
+            }
 
             // 人脸对比
             var result = client.FaceMatch(images);
         }
 
-        public static void FaceDetect()
+        public void FaceDetect(string filePath)
         {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var image = File.ReadAllBytes("图片文件路径");
+
+            var image = File.ReadAllBytes(filePath);
             var options = new Dictionary<string, object>
             {
                 {"face_fields", "beauty,age"}
@@ -29,73 +37,73 @@ namespace Baidu.Aip.Demo
             var result = client.FaceDetect(image, options);
         }
 
-        public static void FaceRegister()
+        public void FaceRegister(string filePath)
         {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var image1 = File.ReadAllBytes("图片文件路径");
 
-            var result = client.User.Register(image1, "uid", "user info here", new[] {"groupId"});
+            var image1 = File.ReadAllBytes(filePath);
+
+            var result = client.User.Register(image1, "uid", "user info here", new[] { "groupId" });
         }
 
-        public static void FaceUpdate()
+        public void FaceUpdate(string filePath)
         {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var image1 = File.ReadAllBytes("图片文件路径");
+
+            var image1 = File.ReadAllBytes(filePath);
 
             var result = client.User.Update(image1, "uid", "groupId", "new user info");
         }
 
-        public static void FaceDelete()
+        public void FaceDelete()
         {
-            var client = new Face.Face("Api Key", "Secret Key");
+
             var result = client.User.Delete("uid");
-            result = client.User.Delete("uid", new[] {"group1"});
+            result = client.User.Delete("uid", new[] { "group1" });
         }
 
-        public static void FaceVerify()
+        public void FaceVerify(string filePath)
         {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var image1 = File.ReadAllBytes("图片文件路径");
 
-            var result = client.User.Verify(image1, "uid", new[] {"groupId"}, 1);
+            var image1 = File.ReadAllBytes(filePath);
+
+            var result = client.User.Verify(image1, "uid", new[] { "groupId" }, 1);
         }
 
-        public static void FaceIdentify()
+        public void FaceIdentify(string filePath)
         {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var image1 = File.ReadAllBytes("图片文件路径");
 
-            var result = client.User.Identify(image1, new[] {"groupId"}, 1, 1);
+            var image1 = File.ReadAllBytes(filePath);
+
+            var result = client.User.Identify(image1, new[] { "groupId" }, 1, 1);
         }
 
-        public static void UserInfo()
+        public void UserInfo()
         {
-            var client = new Face.Face("Api Key", "Secret Key");
+
             var result = client.User.GetInfo("uid");
         }
 
-        public static void GroupList()
+        public void GroupList()
         {
-            var client = new Face.Face("Api Key", "Secret Key");
+
             var result = client.Group.GetAllGroups(0, 100);
         }
 
-        public static void GroupUsers()
+        public void GroupUsers()
         {
-            var client = new Face.Face("Api Key", "Secret Key");
+
             var result = client.Group.GetUsers("groupId", 0, 100);
         }
 
-        public static void GroupAddUser()
+        public void GroupAddUser()
         {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var result = client.Group.AddUser(new[] {"toGroupId"}, "uid", "fromGroupId");
+
+            var result = client.Group.AddUser(new[] { "toGroupId" }, "uid", "fromGroupId");
         }
 
-        public static void GroupDeleteUser()
+        public void GroupDeleteUser()
         {
-            var client = new Face.Face("Api Key", "Secret Key");
-            var result = client.Group.DeleteUser(new[] {"groupId"}, "uid");
+
+            var result = client.Group.DeleteUser(new[] { "groupId" }, "uid");
         }
     }
 }

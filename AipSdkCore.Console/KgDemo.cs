@@ -5,11 +5,11 @@ namespace Baidu.Aip.Demo
 {
     internal class KgDemo
     {
-        private readonly Pie _pieClient;
+        private readonly Pie _pieClient = null;
 
-        public KgDemo()
+        public KgDemo(string apiKey,string secretKey)
         {
-            _pieClient = new Pie("Api Key", "Secret Key");
+            _pieClient = new Pie(apiKey,secretKey);
         }
 
 
