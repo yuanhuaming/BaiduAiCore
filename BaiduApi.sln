@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AipSdkCore", "AipSdkCore\AipSdkCore.csproj", "{DBB9C2F6-D34D-4C32-A8C7-8E2CFBB53204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AipSdkCore.Console", "AipSdkCore.Console\AipSdkCore.Console.csproj", "{960665B1-F4EB-461D-AF25-30B48583FE00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AipSdkCore.Console", "AipSdkCore.Console\AipSdkCore.Console.csproj", "{960665B1-F4EB-461D-AF25-30B48583FE00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AipSdkCore.WinForm", "AipSdkCore.WinForm\AipSdkCore.WinForm.csproj", "{5F6BE08B-B55A-4779-987B-D3959E9F861C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{960665B1-F4EB-461D-AF25-30B48583FE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{960665B1-F4EB-461D-AF25-30B48583FE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{960665B1-F4EB-461D-AF25-30B48583FE00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6BE08B-B55A-4779-987B-D3959E9F861C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6BE08B-B55A-4779-987B-D3959E9F861C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6BE08B-B55A-4779-987B-D3959E9F861C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6BE08B-B55A-4779-987B-D3959E9F861C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
