@@ -114,7 +114,7 @@ namespace Baidu.Aip
             ret.Timeout = 30000;
             var body = ProcessHttpRequest(ret);
             ret.GetRequestStream().Write(body, 0, body.Length);
-            ret.GetRequestStream().Close();
+            //ret.GetRequestStream().Close();
             return ret;
         }
 

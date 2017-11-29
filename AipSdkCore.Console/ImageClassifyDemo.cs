@@ -10,7 +10,7 @@ namespace Baidu.Aip.Demo
   
         public  ImageClassifyDemo(string apiKey, string secretKey)
         {
-            client = new ImageClassify.ImageClassify(apiKey, apiKey);
+            client = new ImageClassify.ImageClassify(apiKey, secretKey);
         }
 
         /// <summary>

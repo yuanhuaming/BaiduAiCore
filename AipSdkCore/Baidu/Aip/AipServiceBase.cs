@@ -33,7 +33,7 @@ namespace Baidu.Aip
             ApiKey = apiKey;
             SecretKey = secretKey;
             ExpireAt = DateTime.Now;
-            DebugLog = false;
+            DebugLog = true;
         }
 
         protected string Token { get; set; }
@@ -124,17 +124,22 @@ namespace Baidu.Aip
 
         protected HttpWebResponse SendRequetRaw(AipHttpRequest aipRequest)
         {
-            var webReq = GenerateWebRequest(aipRequest);
-            Log(webReq.RequestUri.ToString());
-            HttpWebResponse resp;
+            HttpWebRequest webReq = null;
+            HttpWebResponse resp = null;
             try
             {
+                webReq= GenerateWebRequest(aipRequest);
+                Log(webReq.RequestUri.ToString());
                 resp = (HttpWebResponse) webReq.GetResponse();
             }
             catch (WebException e)
             {
                 // 网络请求失败应该抛异常
                 throw new AipException((int) e.Status, e.Message);
+            }
+            finally
+            {
+                webReq?.Abort();
             }
 
             if (resp.StatusCode != HttpStatusCode.OK)
